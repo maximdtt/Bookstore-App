@@ -17,6 +17,7 @@
 		312C65B52C5E723F0064FE43 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312C65B42C5E723F0064FE43 /* HomeViewController.swift */; };
 		312C65BA2C5E72400064FE43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312C65B92C5E72400064FE43 /* Assets.xcassets */; };
 		312C65BD2C5E72400064FE43 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 312C65BC2C5E72400064FE43 /* Base */; };
+		314544AB2C60F03B0051274F /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314544AA2C60F03B0051274F /* CategoriesCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		312C65B92C5E72400064FE43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		312C65BC2C5E72400064FE43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		312C65BE2C5E72400064FE43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		314544AA2C60F03B0051274F /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,7 @@
 		3121EF482C5FC57300AD6066 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				3121EF3E2C5E7F9A00AD6066 /* CategoriesViewController.swift */,
+				314544A92C60EDEC0051274F /* View */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -116,6 +118,15 @@
 				312C65BE2C5E72400064FE43 /* Info.plist */,
 			);
 			path = "Bookstore App";
+			sourceTree = "<group>";
+		};
+		314544A92C60EDEC0051274F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3121EF3E2C5E7F9A00AD6066 /* CategoriesViewController.swift */,
+				314544AA2C60F03B0051274F /* CategoriesCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +207,7 @@
 			files = (
 				3121EF4D2C5FC5F500AD6066 /* HomeCollectionViewCell.swift in Sources */,
 				3121EF3D2C5E7C7B00AD6066 /* TabBarController.swift in Sources */,
+				314544AB2C60F03B0051274F /* CategoriesCollectionViewCell.swift in Sources */,
 				3121EF412C5E7FB500AD6066 /* LikesViewController.swift in Sources */,
 				3121EF432C5E7FC800AD6066 /* AccountViewController.swift in Sources */,
 				312C65B52C5E723F0064FE43 /* HomeViewController.swift in Sources */,
