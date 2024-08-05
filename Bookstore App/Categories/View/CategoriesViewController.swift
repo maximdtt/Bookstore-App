@@ -15,6 +15,7 @@ final class CategoriesViewController: UIViewController {
         let searchBar = UISearchBar()
         searchBar.layer.cornerRadius = 5
         searchBar.placeholder = "Search title/author"
+        searchBar.layer.borderColor = UIColor.white.cgColor
 
     //TODO:
         
@@ -31,6 +32,8 @@ final class CategoriesViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        collectionView.layer.borderColor = UIColor.white.cgColor
         return collectionView
     }()
     
@@ -40,7 +43,6 @@ final class CategoriesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         
     }

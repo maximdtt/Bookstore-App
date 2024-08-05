@@ -18,7 +18,7 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         view.image = UIImage(named: "Image")
         view.clipsToBounds = true
         view.layer.cornerRadius = 5
-            
+        
         return view
     }()
     
@@ -39,7 +39,6 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setupUI()
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
