@@ -18,6 +18,15 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         view.image = UIImage(named: "Image")
         view.clipsToBounds = true
         view.layer.cornerRadius = 5
+        view.contentMode = .scaleAspectFill
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [UIColor.black.withAlphaComponent(0.7).cgColor, UIColor.clear.cgColor]
+        
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        view.layer.addSublayer(gradientLayer)
         
         return view
     }()
