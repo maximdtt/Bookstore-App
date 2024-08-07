@@ -19,16 +19,19 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         view.clipsToBounds = true
         view.layer.cornerRadius = 5
         view.contentMode = .scaleAspectFill
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        gradientLayer.colors = [UIColor.black.withAlphaComponent(0.7).cgColor, UIColor.clear.cgColor]
-        
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
         view.layer.addSublayer(gradientLayer)
         
         return view
+    }()
+    
+    private lazy var gradientLayer: CAGradientLayer = {
+        let layer = CAGradientLayer()
+        
+        layer.colors = [UIColor.black.withAlphaComponent(1).cgColor, UIColor.clear.cgColor]
+        layer.startPoint = CGPoint(x: 0.5, y: 0)
+        layer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        
+        return layer
     }()
     
     private lazy var categoryLabel: UILabel = {
@@ -63,5 +66,12 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
     private func setupConstraints() {
         imageView.snp.makeConstraints { $0.size.edges.equalToSuperview() }
         categoryLabel.snp.makeConstraints { $0.height.bottom.leading.trailing.equalTo(imageView) }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.frame = contentView.bounds
+        gradientLayer.frame = imageView.bounds
+        
     }
 }

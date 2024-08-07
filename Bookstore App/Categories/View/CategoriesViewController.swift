@@ -35,7 +35,6 @@ final class CategoriesViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.layer.borderColor = UIColor.white.cgColor
-        layout.sectionHeadersPinToVisibleBounds = true
 
         return collectionView
     }()
