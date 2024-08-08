@@ -18,6 +18,7 @@
 		312C65BA2C5E72400064FE43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312C65B92C5E72400064FE43 /* Assets.xcassets */; };
 		312C65BD2C5E72400064FE43 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 312C65BC2C5E72400064FE43 /* Base */; };
 		314544AB2C60F03B0051274F /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314544AA2C60F03B0051274F /* CategoriesCollectionViewCell.swift */; };
+		FA84FEFB2C64BC80001905AE /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84FEFA2C64BC80001905AE /* CategoryHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		312C65BC2C5E72400064FE43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		312C65BE2C5E72400064FE43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		314544AA2C60F03B0051274F /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA84FEFA2C64BC80001905AE /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			children = (
 				312C65B42C5E723F0064FE43 /* HomeViewController.swift */,
 				3121EF4C2C5FC5F500AD6066 /* HomeCollectionViewCell.swift */,
+				FA84FEFA2C64BC80001905AE /* CategoryHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3121EF4D2C5FC5F500AD6066 /* HomeCollectionViewCell.swift in Sources */,
+				FA84FEFB2C64BC80001905AE /* CategoryHeaderView.swift in Sources */,
 				3121EF3D2C5E7C7B00AD6066 /* TabBarController.swift in Sources */,
 				314544AB2C60F03B0051274F /* CategoriesCollectionViewCell.swift in Sources */,
 				3121EF412C5E7FB500AD6066 /* LikesViewController.swift in Sources */,

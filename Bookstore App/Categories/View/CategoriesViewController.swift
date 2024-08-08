@@ -35,6 +35,7 @@ final class CategoriesViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.layer.borderColor = UIColor.white.cgColor
+        layout.headerReferenceSize = CGSize(width: view.frame.width, height: 20)
 
         return collectionView
     }()
@@ -57,7 +58,8 @@ final class CategoriesViewController: UIViewController {
         [searchBar, collectionView].forEach { view.addSubview($0) }
         
         collectionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: CategoriesCollectionViewCell.reuseID)
-                
+        collectionView.register(CategoryHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryHeaderView.reuseID)
+
         setupConstraints()
     }
     
@@ -76,6 +78,20 @@ final class CategoriesViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 
 extension CategoriesViewController: UICollectionViewDataSource {
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader,
+              let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CategoryHeaderView.reuseID, for: indexPath) as? CategoryHeaderView else {
+            return UICollectionReusableView()
+        }
+
+        return header
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         20
     }
