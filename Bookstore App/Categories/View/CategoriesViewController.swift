@@ -15,7 +15,6 @@ final class CategoriesViewController: UIViewController {
         let searchBar = UISearchBar()
         searchBar.layer.cornerRadius = 5
         searchBar.placeholder = "Search title/author/ISBN no"
-        searchBar.placeholder.
         searchBar.searchTextField.bounds = searchStackView.frame
         searchBar.layer.borderColor = UIColor.white.cgColor
         searchBar.layer.borderWidth = 1
