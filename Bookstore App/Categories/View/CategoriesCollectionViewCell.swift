@@ -37,7 +37,7 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
     private lazy var categoryLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Category"
+        label.text = "Fantasy"
         label.textAlignment = .center
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 16)

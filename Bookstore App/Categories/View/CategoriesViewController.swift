@@ -14,15 +14,28 @@ final class CategoriesViewController: UIViewController {
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.layer.cornerRadius = 5
-        searchBar.placeholder = "Search title/author"
+        searchBar.placeholder = "Search title/author/ISBN no"
+        searchBar.placeholder.
+        searchBar.searchTextField.bounds = searchStackView.frame
         searchBar.layer.borderColor = UIColor.white.cgColor
         searchBar.layer.borderWidth = 1
-        searchBar.showsBookmarkButton = true
-        searchBar.setImage(UIImage(named: "flag"), for: .bookmark, state: .normal)
-
-    //TODO:
-        
+        searchBar.searchTextField.font = .systemFont(ofSize: 18)
         return searchBar
+    }()
+    
+    private lazy var filterButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "trash.fill"), for: .normal)
+        button.backgroundColor = .red
+        button.layer.cornerRadius = 5
+        return button
+    }()
+    
+    private lazy var searchStackView: UIStackView = {
+        let searchStackView = UIStackView()
+        searchStackView.axis = .horizontal
+        searchStackView.spacing = 8
+        return searchStackView
     }()
     
     private lazy var collectionView: UICollectionView = {
@@ -55,7 +68,8 @@ final class CategoriesViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        [searchBar, collectionView].forEach { view.addSubview($0) }
+        [searchBar, filterButton].forEach { searchStackView.addSubview($0) }
+        [searchStackView, collectionView].forEach { view.addSubview($0) }
         
         collectionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: CategoriesCollectionViewCell.reuseID)
         collectionView.register(CategoryHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryHeaderView.reuseID)
@@ -65,13 +79,29 @@ final class CategoriesViewController: UIViewController {
     
     private func setupConstraints() {
         
-        searchBar.snp.makeConstraints { $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)}
-        
+        searchStackView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(100)
+            
+        }
+
+        searchBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.width.equalTo(275)
+        }
+
+        filterButton.snp.makeConstraints {
+            //$0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(30)
+            $0.width.height.equalTo(53)
+            $0.centerY.equalTo(searchBar)
+        }
+         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom)
+            $0.top.equalTo(searchStackView.snp.bottom).inset(-30)
             $0.leading.trailing.equalToSuperview().inset(5)
             $0.bottom.equalTo(view.safeAreaLayoutGuide) }
-
     }
 }
 

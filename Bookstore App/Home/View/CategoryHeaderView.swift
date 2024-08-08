@@ -7,7 +7,7 @@ final class CategoryHeaderView: UICollectionReusableView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Categories"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.font = UIFont.systemFont(ofSize: 24)
         return label
     }()
 
