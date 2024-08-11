@@ -74,6 +74,9 @@ final class LikesCollectionViewCell: UICollectionViewCell {
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         
+        button.backgroundColor = .black
+        button.tintColor = .white
+        
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         return button
     }()
@@ -116,6 +119,7 @@ final class LikesCollectionViewCell: UICollectionViewCell {
             $0.top.trailing.equalToSuperview()
             $0.bottom.equalTo(nameOfBookLabel.snp.top)
             $0.leading.equalTo(categoryLabel.snp.trailing)
+            $0.width.equalTo(30)
         }
         
         nameOfAuthorLabel.snp.makeConstraints {
