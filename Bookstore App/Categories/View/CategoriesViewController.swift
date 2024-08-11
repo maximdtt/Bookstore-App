@@ -24,9 +24,9 @@ final class CategoriesViewController: UIViewController {
     
     private lazy var filterButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "trash.fill"), for: .normal)
-        button.backgroundColor = .red
-        button.layer.cornerRadius = 5
+        button.setImage(UIImage(systemName: "book"), for: .normal)
+        button.backgroundColor = .lightGray
+        button.layer.cornerRadius = 10
         return button
     }()
     

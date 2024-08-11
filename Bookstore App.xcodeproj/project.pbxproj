@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310202672C6671B500CCB902 /* LikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310202662C6671B500CCB902 /* LikesCollectionViewCell.swift */; };
 		3121EF3D2C5E7C7B00AD6066 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121EF3C2C5E7C7B00AD6066 /* TabBarController.swift */; };
 		3121EF3F2C5E7F9A00AD6066 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121EF3E2C5E7F9A00AD6066 /* CategoriesViewController.swift */; };
 		3121EF412C5E7FB500AD6066 /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121EF402C5E7FB500AD6066 /* LikesViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		310202662C6671B500CCB902 /* LikesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewCell.swift; sourceTree = "<group>"; };
 		3121EF3C2C5E7C7B00AD6066 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3121EF3E2C5E7F9A00AD6066 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		3121EF402C5E7FB500AD6066 /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		310202652C66719500CCB902 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3121EF402C5E7FB500AD6066 /* LikesViewController.swift */,
+				310202662C6671B500CCB902 /* LikesCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3121EF472C5FC56B00AD6066 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,7 +79,7 @@
 		3121EF492C5FC57D00AD6066 /* Likes */ = {
 			isa = PBXGroup;
 			children = (
-				3121EF402C5E7FB500AD6066 /* LikesViewController.swift */,
+				310202652C66719500CCB902 /* View */,
 			);
 			path = Likes;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 				3121EF4D2C5FC5F500AD6066 /* HomeCollectionViewCell.swift in Sources */,
 				FA84FEFB2C64BC80001905AE /* CategoryHeaderView.swift in Sources */,
 				3121EF3D2C5E7C7B00AD6066 /* TabBarController.swift in Sources */,
+				310202672C6671B500CCB902 /* LikesCollectionViewCell.swift in Sources */,
 				314544AB2C60F03B0051274F /* CategoriesCollectionViewCell.swift in Sources */,
 				3121EF412C5E7FB500AD6066 /* LikesViewController.swift in Sources */,
 				3121EF432C5E7FC800AD6066 /* AccountViewController.swift in Sources */,

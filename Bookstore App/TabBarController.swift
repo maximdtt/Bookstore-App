@@ -20,7 +20,7 @@ final class TabBarController: UITabBarController {
         
         viewControllers = [
             setupNavigationController(rootViewController: HomeViewController(), title: "Home", image: UIImage(systemName: "house.fill") ?? UIImage.add),
-            setupNavigationController(rootViewController: CategoriesViewController(), title: "Categories", image: UIImage(systemName: "circle.grid.cross.left.fillui") ?? UIImage.add),
+            setupNavigationController(rootViewController: CategoriesViewController(), title: "Categories", image: UIImage(systemName: "square.grid.2x2") ?? UIImage.add),
             setupNavigationController(rootViewController: LikesViewController(), title: "Likes", image: UIImage(systemName: "heart.fill") ?? UIImage.add),
             setupNavigationController(rootViewController: AccountViewController(), title: "Account", image: UIImage(systemName: "person.crop.square.fill") ?? UIImage.add)
         ]
