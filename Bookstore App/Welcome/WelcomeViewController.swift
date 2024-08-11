@@ -38,7 +38,7 @@ final class WelcomeViewController: UIViewController {
             button.heightAnchor.constraint(equalToConstant: 50)
         ])
         button.layer.cornerRadius = 5
-
+        
         
         return button
     }()
@@ -78,7 +78,7 @@ final class WelcomeViewController: UIViewController {
             $0.bottom.equalToSuperview().inset(100)
             $0.centerX.equalToSuperview()
             
-
+            
         }
         
         
@@ -86,7 +86,16 @@ final class WelcomeViewController: UIViewController {
     
     @objc
     private func goToSelectViewController() {
-        navigationController?.pushViewController(TabBarController(), animated: true)
-    }
-    
+        let tabBarController = TabBarController()
+
+        if let window = UIApplication.shared.windows.first {
+                    window.rootViewController = tabBarController
+
+                    UIView.transition(with: window,
+                                      duration: 0.5,
+                                      options: .transitionFlipFromRight,
+                                      animations: nil,
+                                      completion: nil)
+                }
+            }
 }
