@@ -39,15 +39,8 @@ final class WelcomeViewController: UIViewController {
         button.backgroundColor = .black
         button.setTitle("Get Started", for: .normal)
         button.addTarget(self, action: #selector(goToSelectViewController), for: .touchUpInside)
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalToConstant: 350),
-            button.heightAnchor.constraint(equalToConstant: 50)
-        ])
         button.layer.cornerRadius = 5
-        
-        
+                
         return button
     }()
     
@@ -85,6 +78,8 @@ final class WelcomeViewController: UIViewController {
         getStartedButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(100)
             $0.centerX.equalToSuperview()
+            $0.width.equalTo(350)
+            $0.height.equalTo(50)
         }
         
         welcomeTextLabel.snp.makeConstraints {
