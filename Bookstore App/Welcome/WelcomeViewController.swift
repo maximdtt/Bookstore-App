@@ -25,6 +25,14 @@ final class WelcomeViewController: UIViewController {
         return view
     }()
     
+    private lazy var welcomeTextLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.text = "Read more and stress less with our online book shopping app. Shop from anywhere you are and discover titles that you love. Happy reading!"
+        label.numberOfLines = 0
+        return label
+    }()
+    
     private lazy var getStartedButton: UIButton = {
         let button = UIButton()
         
@@ -62,7 +70,7 @@ final class WelcomeViewController: UIViewController {
     }
     
     func setupConstraints() {
-        [getStartedButton, booksImageView, unImageView].forEach { view.addSubview($0)}
+        [getStartedButton, booksImageView, unImageView, welcomeTextLabel].forEach { view.addSubview($0)}
         
         booksImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
@@ -77,10 +85,14 @@ final class WelcomeViewController: UIViewController {
         getStartedButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(100)
             $0.centerX.equalToSuperview()
-            
-            
         }
         
+        welcomeTextLabel.snp.makeConstraints {
+            $0.top.equalTo(unImageView.snp.bottom).inset(-20)
+            $0.width.equalTo(325)
+            $0.height.equalTo(100)
+            $0.centerX.equalTo(unImageView.snp.centerX)
+        }
         
     }
     
@@ -88,7 +100,8 @@ final class WelcomeViewController: UIViewController {
     private func goToSelectViewController() {
         let tabBarController = TabBarController()
 
-        if let window = UIApplication.shared.windows.first {
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = scene.windows.first {
                     window.rootViewController = tabBarController
 
                     UIView.transition(with: window,
