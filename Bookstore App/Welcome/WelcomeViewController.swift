@@ -13,9 +13,7 @@ final class WelcomeViewController: UIViewController {
     
     private lazy var booksImageView: UIImageView = {
         let view = UIImageView()
-        
         view.image = UIImage(named: "bookswelcome")
-        
         return view
     }()
     
@@ -27,9 +25,11 @@ final class WelcomeViewController: UIViewController {
     
     private lazy var welcomeTextLabel: UILabel = {
         let label = UILabel()
+        
         label.textAlignment = .center
         label.text = "Read more and stress less with our online book shopping app. Shop from anywhere you are and discover titles that you love. Happy reading!"
         label.numberOfLines = 0
+        
         return label
     }()
     

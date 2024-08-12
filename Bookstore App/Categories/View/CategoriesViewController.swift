@@ -4,7 +4,7 @@
 //
 //  Created by Maksims Šalajevs on 03/08/2024.
 //
-
+import SnapKit
 import UIKit
 
 final class CategoriesViewController: UIViewController {
@@ -91,7 +91,6 @@ final class CategoriesViewController: UIViewController {
         }
 
         filterButton.snp.makeConstraints {
-            //$0.top.equalTo(view.safeAreaLayoutGuide)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(30)
             $0.width.height.equalTo(53)
             $0.centerY.equalTo(searchBar)
