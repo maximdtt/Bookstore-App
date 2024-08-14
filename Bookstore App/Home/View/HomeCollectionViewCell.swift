@@ -6,18 +6,29 @@
 //
 
 import UIKit
+import SnapKit
 
 final class HomeCollectionViewCell: UICollectionViewCell {
-    
     static let reuseID = "HomeCollectionViewCell"
     
     // MARK: - GUI Variables
-    
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         
         view.image = UIImage(named: "cover") ?? UIImage.add
-        view.contentMode = .scaleAspectFill
+        view.contentMode = .scaleAspectFit
+        view.clipsToBounds = true
+        
+        return view
+    }()
+    
+    private lazy var blackView: UIView = {
+        let view = UIView()
+        
+        view.backgroundColor = .black
+        view.alpha = 1
+        view.layer.cornerRadius = 8
+        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
         return view
     }()
@@ -26,18 +37,8 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         
         label.text = "Fantasy"
-        label.textColor = .white
-        label.backgroundColor = .black
-        
-        return label
-    }()
-    
-    private lazy var nameOfAuthorLabel: UILabel = {
-        let label = UILabel()
-        
-        label.text = "J.K. Rowling"
-        label.textColor = .white
-        label.backgroundColor = .black
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 10)
         
         return label
     }()
@@ -48,14 +49,22 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         label.text = "Harry Potter and something"
         label.numberOfLines = 0
         label.textColor = .white
-        label.backgroundColor = .black
+        label.font = .boldSystemFont(ofSize: 15)
         
         return label
     }()
     
+    private lazy var nameOfAuthorLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "J.K. Rowling"
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 11)
+        
+        return label
+    }()
     
     // MARK: - Initializations
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -65,36 +74,44 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Methods
-    
-    
-    
     // MARK: - Private methods
-    
     private func setupUI() {
-        [imageView, categoryLabel, nameOfBookLabel, nameOfAuthorLabel].forEach { addSubview($0) }
+        addSubviews([imageView,
+                     blackView,
+                     categoryLabel,
+                     nameOfAuthorLabel,
+                     nameOfBookLabel])
         
         setupConstraints()
     }
     
     private func setupConstraints() {
-        
-        imageView.snp.makeConstraints { $0.size.edges.equalToSuperview() }
-        
-        categoryLabel.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview() }
-        
-        nameOfBookLabel.snp.makeConstraints {
-            $0.top.equalTo(categoryLabel.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+        imageView.snp.makeConstraints { make in
+            make.width.equalTo(91)
+            make.height.equalTo(141)
+            make.top.equalToSuperview().inset(12)
+            make.leading.trailing.equalToSuperview().inset(44)
+            make.centerX.equalToSuperview()
         }
         
-        nameOfAuthorLabel.snp.makeConstraints {
-            $0.top.equalTo(nameOfBookLabel.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+        blackView.snp.makeConstraints { make in
+            make.height.equalTo(92)
+            make.bottom.trailing.leading.equalToSuperview()
         }
         
+        categoryLabel.snp.makeConstraints { make in
+            make.top.equalTo(blackView.snp.top).offset(10)
+            make.trailing.leading.equalTo(blackView).offset(10)
+        }
+        
+        nameOfBookLabel.snp.makeConstraints { make in
+            make.top.equalTo(categoryLabel.snp.bottom)
+            make.trailing.leading.equalTo(blackView).offset(10)
+        }
+        
+        nameOfAuthorLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameOfBookLabel.snp.bottom).offset(8)
+            make.trailing.leading.equalTo(blackView).offset(10)
+        }
     }
-    
 }
