@@ -113,3 +113,9 @@ class HomeViewController: UIViewController {
         }
     }
 }
+
+// MARK: - UICollectionViewDelegate
+
+extension HomeViewController: UICollectionViewDelegate {
+    
+}

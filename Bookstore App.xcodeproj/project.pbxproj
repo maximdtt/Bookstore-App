@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310202672C6671B500CCB902 /* LikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310202662C6671B500CCB902 /* LikesCollectionViewCell.swift */; };
 		3121EF3D2C5E7C7B00AD6066 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121EF3C2C5E7C7B00AD6066 /* TabBarController.swift */; };
 		3121EF3F2C5E7F9A00AD6066 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121EF3E2C5E7F9A00AD6066 /* CategoriesViewController.swift */; };
 		3121EF412C5E7FB500AD6066 /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121EF402C5E7FB500AD6066 /* LikesViewController.swift */; };
@@ -19,9 +20,13 @@
 		312C65BD2C5E72400064FE43 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 312C65BC2C5E72400064FE43 /* Base */; };
 		848B2A182C691D2700D1CF3B /* HomeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B2A172C691D2700D1CF3B /* HomeSectionView.swift */; };
 		84BE10972C6C23EC0078F70A /* UIView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE10962C6C23EC0078F70A /* UIView+Ex.swift */; };
+		314544AB2C60F03B0051274F /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314544AA2C60F03B0051274F /* CategoriesCollectionViewCell.swift */; };
+		317F33332C690E0C0075776A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F33322C690E0C0075776A /* WelcomeViewController.swift */; };
+		FA84FEFB2C64BC80001905AE /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84FEFA2C64BC80001905AE /* CategoryHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		310202662C6671B500CCB902 /* LikesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewCell.swift; sourceTree = "<group>"; };
 		3121EF3C2C5E7C7B00AD6066 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3121EF3E2C5E7F9A00AD6066 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		3121EF402C5E7FB500AD6066 /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +40,9 @@
 		312C65BE2C5E72400064FE43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848B2A172C691D2700D1CF3B /* HomeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionView.swift; sourceTree = "<group>"; };
 		84BE10962C6C23EC0078F70A /* UIView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ex.swift"; sourceTree = "<group>"; };
+		314544AA2C60F03B0051274F /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		317F33322C690E0C0075776A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		FA84FEFA2C64BC80001905AE /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		310202652C66719500CCB902 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3121EF402C5E7FB500AD6066 /* LikesViewController.swift */,
+				310202662C6671B500CCB902 /* LikesCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3121EF472C5FC56B00AD6066 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -60,7 +77,7 @@
 		3121EF482C5FC57300AD6066 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				3121EF3E2C5E7F9A00AD6066 /* CategoriesViewController.swift */,
+				314544A92C60EDEC0051274F /* View */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -68,7 +85,7 @@
 		3121EF492C5FC57D00AD6066 /* Likes */ = {
 			isa = PBXGroup;
 			children = (
-				3121EF402C5E7FB500AD6066 /* LikesViewController.swift */,
+				310202652C66719500CCB902 /* View */,
 			);
 			path = Likes;
 			sourceTree = "<group>";
@@ -87,6 +104,7 @@
 				312C65B42C5E723F0064FE43 /* HomeViewController.swift */,
 				848B2A172C691D2700D1CF3B /* HomeSectionView.swift */,
 				3121EF4C2C5FC5F500AD6066 /* HomeCollectionViewCell.swift */,
+				FA84FEFA2C64BC80001905AE /* CategoryHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -112,6 +130,7 @@
 			children = (
 				312C65B02C5E723F0064FE43 /* AppDelegate.swift */,
 				3121EF3C2C5E7C7B00AD6066 /* TabBarController.swift */,
+				317F33342C690E1A0075776A /* Welcome */,
 				3121EF472C5FC56B00AD6066 /* Home */,
 				3121EF482C5FC57300AD6066 /* Categories */,
 				3121EF492C5FC57D00AD6066 /* Likes */,
@@ -130,6 +149,23 @@
 				84BE10962C6C23EC0078F70A /* UIView+Ex.swift */,
 			);
 			path = Extensions;
+      sourceTree = "<group>";
+    };
+		314544A92C60EDEC0051274F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3121EF3E2C5E7F9A00AD6066 /* CategoriesViewController.swift */,
+				314544AA2C60F03B0051274F /* CategoriesCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		317F33342C690E1A0075776A /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				317F33322C690E0C0075776A /* WelcomeViewController.swift */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +246,11 @@
 			files = (
 				3121EF4D2C5FC5F500AD6066 /* HomeCollectionViewCell.swift in Sources */,
 				848B2A182C691D2700D1CF3B /* HomeSectionView.swift in Sources */,
+				317F33332C690E0C0075776A /* WelcomeViewController.swift in Sources */,
+				FA84FEFB2C64BC80001905AE /* CategoryHeaderView.swift in Sources */,
 				3121EF3D2C5E7C7B00AD6066 /* TabBarController.swift in Sources */,
+				310202672C6671B500CCB902 /* LikesCollectionViewCell.swift in Sources */,
+				314544AB2C60F03B0051274F /* CategoriesCollectionViewCell.swift in Sources */,
 				3121EF412C5E7FB500AD6066 /* LikesViewController.swift in Sources */,
 				3121EF432C5E7FC800AD6066 /* AccountViewController.swift in Sources */,
 				312C65B52C5E723F0064FE43 /* HomeViewController.swift in Sources */,
