@@ -121,6 +121,7 @@ class HomeSectionView: UIView {
     
     // MARK: - Private methods
     private func setupUI() {
+        ///У тебя есть расширение addSubviews, почему его не используешь?
         addSubview(titleLabel)
         addSubview(seeMoreButton)
         addSubviews([weekButton, monthButton, yearButton])

@@ -59,7 +59,9 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
     // MARK: - Private methods
     
     private func setupUI() {
-        [imageView, categoryLabel].forEach { addSubview($0) }
+        ///в ячейке добавляем в ее contentView
+        ///В проекте добавлено расширение addSubviews, будет здорово если придерживаться одного код-стайла
+        [imageView, categoryLabel].forEach { contentView.addSubview($0) }
         setupConstraints()
     }
     

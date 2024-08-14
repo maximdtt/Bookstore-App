@@ -58,7 +58,7 @@ class HomeViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /// В сэтап юай
         navigationController?.isNavigationBarHidden = true
         
         setupUI()
@@ -67,7 +67,7 @@ class HomeViewController: UIViewController {
     // MARK: - Private methods
     private func setupUI() {
         view.backgroundColor = .white
-        
+        /// Есть расширение addSubviews
         view.addSubview(titleLabel)
         view.addSubview(searchButton)
         view.addSubview(scrollView)
