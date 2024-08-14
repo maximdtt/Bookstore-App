@@ -70,13 +70,16 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         setupUI()
     }
     
+    /// Если не используете сториборд, отключайте этот инит для всех платформ
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Private methods
     private func setupUI() {
-        addSubviews([imageView,
+        /// если это ячейка, добавляйте в ее contentView. Иначе будете добавлять поверх
+        contentView.addSubviews([imageView,
                      blackView,
                      categoryLabel,
                      nameOfAuthorLabel,
