@@ -43,6 +43,19 @@ final class TabBarController: UITabBarController {
                 return "Account"
             }
         }
+        
+        var image: UIImage {
+            switch self {
+            case .home:
+                return UIImage(systemName: "house.fill") ?? UIImage.add
+            case .categories:
+                return UIImage(systemName: "square.grid.2x2") ?? UIImage.add
+            case .likes:
+                return UIImage(systemName: "heart.fill") ?? UIImage.add
+            case .account:
+                return UIImage(systemName: "person.crop.square.fill") ?? UIImage.add
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -56,10 +69,10 @@ final class TabBarController: UITabBarController {
         /// с картинками можно сделать тоже самое как с контроллером и тайтлом
         /// Либо завести отдельный енам который в кейсах будет возвращать стринг с названием картинки и использовать его сырое значение
         viewControllers = [
-            setupNavigationController(rootViewController: Controllers.home.controller, title: Controllers.home.title, image: UIImage(systemName: "house.fill") ?? UIImage.add),
-            setupNavigationController(rootViewController: Controllers.categories.controller, title: Controllers.categories.title, image: UIImage(systemName: "square.grid.2x2") ?? UIImage.add),
-            setupNavigationController(rootViewController: LikesViewController(), title: "Likes", image: UIImage(systemName: "heart.fill") ?? UIImage.add),
-            setupNavigationController(rootViewController: AccountViewController(), title: "Account", image: UIImage(systemName: "person.crop.square.fill") ?? UIImage.add)
+            setupNavigationController(rootViewController: Controllers.home.controller, title: Controllers.home.title, image: Controllers.home.image),
+            setupNavigationController(rootViewController: Controllers.categories.controller, title: Controllers.categories.title, image: Controllers.categories.image),
+            setupNavigationController(rootViewController: Controllers.likes.controller, title: Controllers.likes.title, image: Controllers.likes.image),
+            setupNavigationController(rootViewController: Controllers.account.controller, title: Controllers.account.title, image: Controllers.account.image)
         ]
         
     }

@@ -52,6 +52,7 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         setupUI()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -61,7 +62,7 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
     private func setupUI() {
         ///в ячейке добавляем в ее contentView
         ///В проекте добавлено расширение addSubviews, будет здорово если придерживаться одного код-стайла
-        [imageView, categoryLabel].forEach { contentView.addSubview($0) }
+        contentView.addSubviews([imageView, categoryLabel])
         setupConstraints()
     }
     

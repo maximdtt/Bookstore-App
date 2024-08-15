@@ -13,19 +13,19 @@ final class WelcomeViewController: UIViewController {
     /// Нужна ли тут ленивая инициализация? Есть какие-нибудь элементы которые загружаются не сразу при загрузке вью контроллера?
     /// Текст и прочие текстовые константы лучше выносить в экстеншн, что бы собрать их в одном месте, в будущем проще вносить правки другим разработчикам или самому (не обязательный коммент, но здорово если будете знать этот подход)
 
-    private lazy var booksImageView: UIImageView = {
+    private var booksImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: Constants.Images.booksImageName)
         return view
     }()
     
-    private lazy var unImageView: UIImageView = {
+    private var unImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: Constants.Images.unImageName)
         return view
     }()
     
-    private lazy var welcomeTextLabel: UILabel = {
+    private var welcomeTextLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.text = Constants.Texts.welcomeText
@@ -33,7 +33,7 @@ final class WelcomeViewController: UIViewController {
         return label
     }()
     
-    private lazy var getStartedButton: UIButton = {
+    private var getStartedButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .black
         button.setTitle(Constants.Texts.getStartedButtonText, for: .normal)

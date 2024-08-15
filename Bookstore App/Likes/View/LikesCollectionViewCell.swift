@@ -88,6 +88,7 @@ final class LikesCollectionViewCell: UICollectionViewCell {
         setupUI()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -96,7 +97,7 @@ final class LikesCollectionViewCell: UICollectionViewCell {
     
     private func setupUI() {
         
-        [imageView, categoryLabel, nameOfAuthorLabel, nameOfBookLabel, blackView, closeButton].forEach { addSubview($0) }
+        contentView.addSubviews([imageView, categoryLabel, nameOfAuthorLabel, nameOfBookLabel, blackView, closeButton])
         setupConstraints()
     }
     
