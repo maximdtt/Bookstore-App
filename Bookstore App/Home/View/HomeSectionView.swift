@@ -93,19 +93,36 @@ class HomeSectionView: UIView {
     private let fond: UIFont = .boldSystemFont(ofSize: 14)
     private let borderWidth: CGFloat = 1
     
+    private var viewModel: HomeViewModel
+    
     // MARK: - Initializations
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: CGRect.zero)
+        setupViewModel()
+        
         setupUI()
         
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.reuseID)
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     //MARK: - Methods
+    private func setupViewModel() {
+        viewModel.reloadData = { [weak self] in
+            self?.collectionView.reloadData()
+        }
+        
+        viewModel.showError = { error in
+            //TODO: Show alert with error
+            print(error)
+        }
+    }
+    
     func setTitle(title: String) {
         titleLabel.text = title
     }
@@ -121,11 +138,13 @@ class HomeSectionView: UIView {
     
     // MARK: - Private methods
     private func setupUI() {
-        ///У тебя есть расширение addSubviews, почему его не используешь?
-        addSubview(titleLabel)
-        addSubview(seeMoreButton)
-        addSubviews([weekButton, monthButton, yearButton])
-        addSubview(collectionView)
+        
+        addSubviews([titleLabel,
+                     seeMoreButton,
+                     weekButton,
+                     monthButton,
+                     yearButton,
+                     collectionView])
         
         setupConstraints()
     }
@@ -174,14 +193,16 @@ class HomeSectionView: UIView {
 // MARK: - UICollectionViewDataSource
 extension HomeSectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        self.viewModel.numberOfCells
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.reuseID, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
-        
         cell.backgroundColor = UIColor(red: 184/255, green: 184/255, blue: 184/255, alpha: 1.0)
         cell.layer.cornerRadius = 8
+        
+        let book = self.viewModel.getBook(for: indexPath.row)
+        cell.set(books: book)
         
         return cell
     }
