@@ -44,7 +44,6 @@ class HomeViewController: UIViewController {
     private lazy var topBooksSectionView: HomeSectionView = {
 
         let view = HomeSectionView(viewModel: HomeViewModel())
-        let view = HomeSectionView()
         view.viewController = self
         
         return view
@@ -52,7 +51,6 @@ class HomeViewController: UIViewController {
     
     private lazy var recentBooksSectionView: HomeSectionView = {
         let view = HomeSectionView(viewModel: HomeViewModel())
-        let view = HomeSectionView()
         view.viewController = self
         view.hiddenNav()
         view.setTitle(title: "Recent Books")
