@@ -70,15 +70,20 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         setupUI()
     }
     
-    /// Если не используете сториборд, отключайте этот инит для всех платформ
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Methods
+    func set(books: BookCellViewModel) {
+        categoryLabel.text = books.subject
+        nameOfBookLabel.text = books.title
+        nameOfAuthorLabel.text = books.authorName
+    }
+    
     // MARK: - Private methods
     private func setupUI() {
-        /// если это ячейка, добавляйте в ее contentView. Иначе будете добавлять поверх
         contentView.addSubviews([imageView,
                      blackView,
                      categoryLabel,
