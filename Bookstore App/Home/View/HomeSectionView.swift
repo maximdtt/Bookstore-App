@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 
 class HomeSectionView: UIView {
+    weak var viewController: UIViewController?
+    
     // MARK: - GUI Variables
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -210,5 +212,7 @@ extension HomeSectionView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension HomeSectionView: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewController?.navigationController?.pushViewController(DetailsBookViewController(), animated: true)
+    }
 }

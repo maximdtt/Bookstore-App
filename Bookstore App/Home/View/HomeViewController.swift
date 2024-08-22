@@ -42,13 +42,18 @@ class HomeViewController: UIViewController {
     private lazy var contentView: UIView = UIView()
     
     private lazy var topBooksSectionView: HomeSectionView = {
+
         let view = HomeSectionView(viewModel: HomeViewModel())
+        let view = HomeSectionView()
+        view.viewController = self
         
         return view
     }()
     
     private lazy var recentBooksSectionView: HomeSectionView = {
         let view = HomeSectionView(viewModel: HomeViewModel())
+        let view = HomeSectionView()
+        view.viewController = self
         view.hiddenNav()
         view.setTitle(title: "Recent Books")
         
@@ -110,5 +115,12 @@ class HomeViewController: UIViewController {
             make.height.equalTo(319)
             make.bottom.equalTo(contentView.snp.bottom).offset(-16)
         }
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }
