@@ -24,6 +24,7 @@ final class KeyValueLabelView: UIView {
         
         label.textColor = .black
         label.numberOfLines = 0
+        label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 14)
         
         return label
@@ -62,6 +63,10 @@ final class KeyValueLabelView: UIView {
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        valueLabel.snp.makeConstraints { make in
+            make.width.equalTo(150)
         }
     }
 }

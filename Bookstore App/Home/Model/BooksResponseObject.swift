@@ -14,7 +14,7 @@ struct BooksResponseObject: Codable {
     let subject: [String]    //категория
     let ratingsAverage: Double  //рейтинг
     let firstSentence: [String]?   //описание первого абзаца
-    let isbn: [String]
+    let isbn: [String]      //фото
     
     func getImage() -> URL? {
         if isbn.isEmpty {
@@ -30,6 +30,6 @@ struct BooksResponseObject: Codable {
         case subject
         case ratingsAverage = "ratings_average"
         case firstSentence = "first_sentence"
-        case isbn
+        case isbn 
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class HomeCollectionViewCell: UICollectionViewCell {
     static let reuseID = "HomeCollectionViewCell"
@@ -77,6 +78,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Methods
     func set(books: BookCellViewModel) {
+        imageView.kf.setImage(with: books.image)
         categoryLabel.text = books.subject
         nameOfBookLabel.text = books.title
         nameOfAuthorLabel.text = books.authorName

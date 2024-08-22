@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class DetailsBookViewController: UIViewController {
     //MARK: - GUI Variables
@@ -78,6 +79,7 @@ class DetailsBookViewController: UIViewController {
         view.axis = .vertical
         view.alignment = .leading
         view.spacing = 8
+        
     
         return view
     }()
@@ -107,8 +109,18 @@ class DetailsBookViewController: UIViewController {
     
     //MARK: - Properties
     private var keyValueLabels: [KeyValueLabelView] = []
+    private let viewModel: DetailsViewModelProtocol
     
     // MARK: - Life Cycle
+    init(viewModel: DetailsViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -132,10 +144,15 @@ class DetailsBookViewController: UIViewController {
     }
     
     private func setupLabels() {
+        nameOfBookLabel.text = viewModel.title
+        imageView.kf.setImage(with: viewModel.image)
+        descriptionLabel.text = viewModel.firstSentence
+        titleLabel.text = viewModel.subject
+        
         let labelsData = [
-            ("Author:", "Oscar Wilde"),
-            ("Category:", "Classics"),
-            ("Rating:", "4.11/5")
+            ("Author:", viewModel.authorName),
+            ("Category:", viewModel.subject),
+            ("Rating:", String(viewModel.ratingsAverage) + "/5")
         ]
         
         keyValueLabels = labelsData.map { KeyValueLabelView(key: $0.0, value: $0.1) }
@@ -202,7 +219,3 @@ class DetailsBookViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 }
-
-
-
-

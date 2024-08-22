@@ -213,6 +213,8 @@ extension HomeSectionView: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension HomeSectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewController?.navigationController?.pushViewController(DetailsBookViewController(), animated: true)
+        let book = viewModel.getBook(for: indexPath.row)
+        
+        viewController?.navigationController?.pushViewController(DetailsBookViewController(viewModel: DetailsViewModel(book: book)), animated: true)
     }
 }
