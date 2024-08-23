@@ -14,6 +14,7 @@ struct BookCellViewModel {
     let subject: String
     let ratingsAverage: Double
     let firstSentence: String
+    let image: URL?
     
     init(book: BooksResponseObject) {
         title = book.title
@@ -21,5 +22,6 @@ struct BookCellViewModel {
         subject = book.subject[0]
         ratingsAverage = book.ratingsAverage
         firstSentence = book.firstSentence?.first ?? ""
+        image = book.getImage()
     }
 }
