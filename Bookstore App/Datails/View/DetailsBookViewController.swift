@@ -33,9 +33,10 @@ class DetailsBookViewController: UIViewController {
     private lazy var likeButton: UIButton = {
         let button = UIButton()
         
-        let image = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
+        let image = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
         button.setImage(image, for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(self.likeAction), for: .touchUpInside)
         
         return button
     }()
@@ -149,6 +150,11 @@ class DetailsBookViewController: UIViewController {
         descriptionLabel.text = viewModel.firstSentence
         titleLabel.text = viewModel.subject
         
+        if viewModel.getByKey() {
+            let image = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
+            likeButton.setImage(image, for: .normal)
+        }
+        
         let labelsData = [
             ("Author:", viewModel.authorName),
             ("Category:", viewModel.subject),
@@ -216,6 +222,21 @@ class DetailsBookViewController: UIViewController {
     
     @objc
     func backAction() {
+        
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    func likeAction() {
+        var image = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
+        
+        if viewModel.getByKey() {
+            viewModel.delete()
+            image = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
+        } else {
+            viewModel.save()
+        }
+        
+        likeButton.setImage(image, for: .normal)
     }
 }

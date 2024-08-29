@@ -9,6 +9,7 @@ import Foundation
 
 
 struct BookCellViewModel {
+    let key: String
     let title: String
     let authorName: String
     let subject: String
@@ -17,6 +18,7 @@ struct BookCellViewModel {
     let image: URL?
     
     init(book: BooksResponseObject) {
+        key = book.key
         title = book.title
         authorName = book.authorName[0]
         subject = book.subject[0]
