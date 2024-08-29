@@ -7,6 +7,7 @@
 
 import SnapKit
 import UIKit
+import Kingfisher
 
 final class LikesCollectionViewCell: UICollectionViewCell {
     static let reuseID = "LikesCollectionViewCell"
@@ -25,12 +26,10 @@ final class LikesCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    
-    
     private lazy var categoryLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "\n  " + "Fantasy"
+        label.text = "Fantasy"
         label.textColor = .white
         label.backgroundColor = .black
         label.font = .systemFont(ofSize: 12)
@@ -54,7 +53,7 @@ final class LikesCollectionViewCell: UICollectionViewCell {
     private lazy var nameOfBookLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "  " + "Harry Potter and something"
+        label.text = "Harry Potter and something"
         label.numberOfLines = 0
         label.textColor = .white
         label.backgroundColor = .black
@@ -77,9 +76,12 @@ final class LikesCollectionViewCell: UICollectionViewCell {
         button.backgroundColor = .black
         button.tintColor = .white
         
+        button.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         return button
     }()
+    
+    var key: String?
     
     // MARK: - Initializations
     
@@ -91,6 +93,22 @@ final class LikesCollectionViewCell: UICollectionViewCell {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    //MARK: - Methods
+    func set(books: BooksLikesObject) {
+        imageView.kf.setImage(with: books.image)
+        categoryLabel.text = books.subject
+        nameOfAuthorLabel.text = books.authorName
+        nameOfBookLabel.text = books.title
+        key = books.key
+    }
+    
+    @objc
+    func closeAction() {
+        guard let key = key else { return }
+        BookPersistent.delete(key)
     }
     
     // MARK: - Private methods

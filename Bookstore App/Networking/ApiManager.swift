@@ -16,7 +16,7 @@ final class ApiManager {
         let stringUrl = baseUrl + path + requiredFields + "&q=1&limit=10"
         
         guard let url = URL(string: stringUrl) else { return }
-        
+
         let session = URLSession.shared.dataTask(with: url) { data, response, error in
             handleResponse(data: data, error: error, completion: completion)
         }
@@ -35,6 +35,7 @@ final class ApiManager {
                 completion(.success(model.docs))
             }
             catch let decodeError {
+                print(decodeError)
                 completion(.failure(decodeError))
             }
         } else {

@@ -12,8 +12,8 @@ struct BooksResponseObject: Codable {
     let title: String     //название
     let authorName: [String]   //автор
     let subject: [String]    //категория
-    let ratingsAverage: Double  //рейтинг
-    let firstSentence: [String]?   //описание первого абзаца
+    let ratingsAverage: Double //рейтинг
+    let firstSentence: [String]?  //описание первого абзаца
     let isbn: [String]      //фото
     
     func getImage() -> URL? {

@@ -14,6 +14,10 @@ protocol DetailsViewModelProtocol {
     var ratingsAverage: Double { get }
     var firstSentence: String? { get }
     var image: URL? { get }
+    
+    func save()
+    func delete()
+    func getByKey() -> Bool
 }
 
 final class DetailsViewModel: DetailsViewModelProtocol {
@@ -23,6 +27,7 @@ final class DetailsViewModel: DetailsViewModelProtocol {
     let ratingsAverage: Double
     let firstSentence: String?
     let image: URL?
+    let key: String
     
     init(book: BookCellViewModel) {
         title = book.title
@@ -31,5 +36,20 @@ final class DetailsViewModel: DetailsViewModelProtocol {
         ratingsAverage = book.ratingsAverage
         firstSentence = book.firstSentence
         image = book.image
+        key = book.key
+    }
+    
+    func save() {
+        let book = BooksLikesObject (title: title, authorName: authorName, subject: subject, image: image, key: key)
+        
+        BookPersistent.save(book)
+    }
+    
+    func delete() {
+        BookPersistent.delete(key)
+    }
+    
+    func getByKey() -> Bool {
+        BookPersistent.getByKey(key)
     }
 }
