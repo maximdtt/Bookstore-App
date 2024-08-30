@@ -11,6 +11,14 @@ import UIKit
 final class LikesViewController: UIViewController {
     
     // MARK: - GUI Variables
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "Likes"
+        label.font = .boldSystemFont(ofSize: 16)
+        
+        return label
+    }()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -67,13 +75,14 @@ final class LikesViewController: UIViewController {
     
     @objc
     private func updateData() {
-        print(1111)
         viewModel.getBooks()
     }
     
     private func setupUI() {
         view.backgroundColor = .white
-        view.addSubview(collectionView)
+        navigationController?.isNavigationBarHidden = true
+        
+        view.addSubviews([titleLabel,collectionView])
         
         collectionView.register(LikesCollectionViewCell.self, forCellWithReuseIdentifier: LikesCollectionViewCell.reuseID)
         
@@ -81,19 +90,20 @@ final class LikesViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        collectionView.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.centerX.equalToSuperview()
         }
         
+        collectionView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(titleLabel.snp.bottom).offset(35)
+        }
     }
 }
 
 // MARK: - UICollectionViewDataSource
 extension LikesViewController: UICollectionViewDataSource {
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.numberOfCells
     }
@@ -101,7 +111,7 @@ extension LikesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LikesCollectionViewCell.reuseID, for: indexPath) as? LikesCollectionViewCell else {
             return UICollectionViewCell()}
-        cell.layer.cornerRadius = 10
+        cell.layer.cornerRadius = 8
         cell.layer.masksToBounds = true
         
         let book = viewModel.getBook(for: indexPath.row)

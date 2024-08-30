@@ -39,6 +39,7 @@
 		84BE10CC2C7D4EAA0078F70A /* BookPersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE10CB2C7D4EAA0078F70A /* BookPersistent.swift */; };
 		84BE10CE2C7EA3FB0078F70A /* LikesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE10CD2C7EA3FB0078F70A /* LikesViewModel.swift */; };
 		84BE10D52C8025660078F70A /* BooksLikesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE10D42C8025660078F70A /* BooksLikesObject.swift */; };
+		84BE10D72C8136EA0078F70A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE10D62C8136EA0078F70A /* LoginViewController.swift */; };
 		FA84FEFB2C64BC80001905AE /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84FEFA2C64BC80001905AE /* CategoryHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		84BE10CB2C7D4EAA0078F70A /* BookPersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPersistent.swift; sourceTree = "<group>"; };
 		84BE10CD2C7EA3FB0078F70A /* LikesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewModel.swift; sourceTree = "<group>"; };
 		84BE10D42C8025660078F70A /* BooksLikesObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksLikesObject.swift; sourceTree = "<group>"; };
+		84BE10D62C8136EA0078F70A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA84FEFA2C64BC80001905AE /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 				3121EF482C5FC57300AD6066 /* Categories */,
 				3121EF492C5FC57D00AD6066 /* Likes */,
 				3121EF4A2C5FC58500AD6066 /* Account */,
+				84BE10D82C8136EF0078F70A /* Login */,
 				84BE10952C6C23A40078F70A /* Extensions */,
 				84BE10C32C77E7220078F70A /* CoreData */,
 				84BE10AE2C76A46A0078F70A /* Networking */,
@@ -282,6 +285,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		84BE10D82C8136EF0078F70A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				84BE10D62C8136EA0078F70A /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -378,6 +389,7 @@
 				84BE10A62C751F5C0078F70A /* BooksResponseObject.swift in Sources */,
 				84BE10B82C77BFF80078F70A /* KeyValueLabelView.swift in Sources */,
 				314544AB2C60F03B0051274F /* CategoriesCollectionViewCell.swift in Sources */,
+				84BE10D72C8136EA0078F70A /* LoginViewController.swift in Sources */,
 				84BE10AD2C76A3040078F70A /* ApiManager.swift in Sources */,
 				84BE10CC2C7D4EAA0078F70A /* BookPersistent.swift in Sources */,
 				3121EF412C5E7FB500AD6066 /* LikesViewController.swift in Sources */,

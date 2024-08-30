@@ -26,7 +26,7 @@ final class TabBarController: UITabBarController {
             case .likes:
                 return LikesViewController(viewModel: LikesViewModel())
             case .account:
-                return AccountViewController()
+                return LoginViewController()
             }
         }
 

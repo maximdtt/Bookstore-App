@@ -13,15 +13,21 @@ final class LikesCollectionViewCell: UICollectionViewCell {
     static let reuseID = "LikesCollectionViewCell"
     
     // MARK: - GUI Variables
-    
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         
         view.image = UIImage(named: "bookcover")
         view.clipsToBounds = true
-        view.contentMode = .scaleAspectFit
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 1
+        view.contentMode = .scaleAspectFill
+        
+        return view
+    }()
+    
+    private lazy var blackView: UIView = {
+        let view = UIView()
+        
+        view.backgroundColor = .black
+        view.alpha = 1
         
         return view
     }()
@@ -31,7 +37,6 @@ final class LikesCollectionViewCell: UICollectionViewCell {
         
         label.text = "Fantasy"
         label.textColor = .white
-        label.backgroundColor = .black
         label.font = .systemFont(ofSize: 12)
         label.numberOfLines = 0
         
@@ -41,9 +46,8 @@ final class LikesCollectionViewCell: UICollectionViewCell {
     private lazy var nameOfAuthorLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "  " + "J.K. Rowling"
+        label.text = "J.K. Rowling"
         label.textColor = .white
-        label.backgroundColor = .black
         label.font = .systemFont(ofSize: 12)
         label.numberOfLines = 0
         
@@ -56,31 +60,25 @@ final class LikesCollectionViewCell: UICollectionViewCell {
         label.text = "Harry Potter and something"
         label.numberOfLines = 0
         label.textColor = .white
-        label.backgroundColor = .black
         label.font = .boldSystemFont(ofSize: 17)
         
         return label
     }()
     
-    private lazy var blackView: UIView = {
-        let view = UIView()
-        
-        view.backgroundColor = .black
-        
-        return view
-    }()
-    
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .black
+
         button.tintColor = .white
         
         button.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        
         return button
     }()
     
+    
+    //MARK: - Properties
     var key: String?
     
     // MARK: - Initializations
@@ -112,44 +110,49 @@ final class LikesCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Private methods
-    
     private func setupUI() {
+        contentView.addSubviews([imageView, blackView])
+        blackView.addSubviews([categoryLabel,
+                               nameOfAuthorLabel,
+                               nameOfBookLabel,
+                               closeButton])
         
-        contentView.addSubviews([imageView, categoryLabel, nameOfAuthorLabel, nameOfBookLabel, blackView, closeButton])
         setupConstraints()
     }
     
     private func setupConstraints() {
-        imageView.snp.makeConstraints {
-            $0.top.leading.bottom.equalToSuperview()
-            $0.width.equalTo(95)
+        imageView.snp.makeConstraints { make in
+            make.top.leading.bottom.equalToSuperview()
+            make.width.equalTo(95)
         }
         
-        categoryLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalTo(imageView.snp.trailing) }
-        
-        nameOfBookLabel.snp.makeConstraints {
-            $0.leading.equalTo(imageView.snp.trailing)
-            $0.top.equalTo(categoryLabel.snp.bottom)
-            $0.trailing.equalToSuperview() }
-        
-        closeButton.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview()
-            $0.bottom.equalTo(nameOfBookLabel.snp.top)
-            $0.leading.equalTo(categoryLabel.snp.trailing)
-            $0.width.equalTo(30)
+        blackView.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.top)
+            make.leading.equalTo(imageView.snp.trailing)
+            make.bottom.trailing.equalToSuperview()
         }
         
-        nameOfAuthorLabel.snp.makeConstraints {
-            $0.leading.equalTo(imageView.snp.trailing)
-            $0.top.equalTo(nameOfBookLabel.snp.bottom)
-            $0.trailing.equalToSuperview() }
-            
-        blackView.snp.makeConstraints {
-            $0.top.equalTo(nameOfAuthorLabel.snp.bottom)
-            $0.leading.equalTo(imageView.snp.trailing)
-            $0.bottom.trailing.equalToSuperview() }
-      
+        categoryLabel.snp.makeConstraints { make in
+            make.top.equalTo(blackView.snp.top).offset(14)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
+        }
+        
+        nameOfBookLabel.snp.makeConstraints { make in
+            make.leading.equalTo(categoryLabel.snp.leading)
+            make.top.equalTo(categoryLabel.snp.bottom)
+            make.trailing.equalToSuperview()
+        }
+        
+        nameOfAuthorLabel.snp.makeConstraints { make in
+            make.leading.equalTo(categoryLabel.snp.leading)
+            make.top.equalTo(nameOfBookLabel.snp.bottom).offset(4)
+            make.trailing.equalToSuperview()
+        }
+        
+        closeButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(14)
+            make.trailing.equalToSuperview().inset(9)
+            make.width.equalTo(20)
+        }
     }
 }
