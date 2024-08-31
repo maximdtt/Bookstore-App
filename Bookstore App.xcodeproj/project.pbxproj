@@ -45,6 +45,7 @@
 		84BE10DF2C8286E80078F70A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84BE10DE2C8286E80078F70A /* FirebaseAuth */; };
 		84BE10E12C8286E80078F70A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 84BE10E02C8286E80078F70A /* FirebaseDatabase */; };
 		84BE10E32C8286E80078F70A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 84BE10E22C8286E80078F70A /* FirebaseFirestore */; };
+		84BE10E52C83A3730078F70A /* TopBookApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE10E42C83A3730078F70A /* TopBookApiManager.swift */; };
 		FA84FEFB2C64BC80001905AE /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84FEFA2C64BC80001905AE /* CategoryHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		84BE10D42C8025660078F70A /* BooksLikesObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksLikesObject.swift; sourceTree = "<group>"; };
 		84BE10D62C8136EA0078F70A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84BE10D92C827BC00078F70A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84BE10E42C83A3730078F70A /* TopBookApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBookApiManager.swift; sourceTree = "<group>"; };
 		FA84FEFA2C64BC80001905AE /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -248,6 +250,7 @@
 			children = (
 				84BE10AC2C76A3040078F70A /* ApiManager.swift */,
 				84BE10AF2C76B3D40078F70A /* NetworkingError.swift */,
+				84BE10E42C83A3730078F70A /* TopBookApiManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				3121EF3D2C5E7C7B00AD6066 /* TabBarController.swift in Sources */,
 				84BE10A92C751FE90078F70A /* ResponseObject.swift in Sources */,
 				84BE10D52C8025660078F70A /* BooksLikesObject.swift in Sources */,
+				84BE10E52C83A3730078F70A /* TopBookApiManager.swift in Sources */,
 				84BE10BA2C77C02A0078F70A /* UIStackView+Ex.swift in Sources */,
 				84BE10B72C77BFF80078F70A /* DetailsBookViewController.swift in Sources */,
 				84BE10AB2C7548760078F70A /* BookCellViewModel.swift in Sources */,

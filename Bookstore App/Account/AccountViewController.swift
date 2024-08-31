@@ -83,6 +83,7 @@ final class AccountViewController: UIViewController {
     // MARK: - Private methods
     private func setupUI() {
         view.backgroundColor = .white
+        navigationController?.isNavigationBarHidden = true
         
         view.addSubviews([accTitleLabel, logoutButton, contentView])
         contentView.addSubviews([accImage,loginContainerView])

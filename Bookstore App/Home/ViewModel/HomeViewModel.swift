@@ -9,10 +9,16 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
+enum BookSection {
+    case all
+    case trend(trending: TopBookApiManager.Trending)
+    case recent
+}
+
 protocol HomeViewModelProtocol {
     var reloadData: (() -> Void)? { get set }
     var showError: ((String) -> Void)? { get set }
-
+    
     var numberOfCells: Int { get }
     
     func getBook(for row: Int) -> BookCellViewModel
@@ -35,7 +41,14 @@ final class HomeViewModel: HomeViewModelProtocol {
         }
     }
     
+    private var selectedSection: BookSection = .all
+    
     init() {
+        //        loadData()
+    }
+    
+    func setSection(_ section: BookSection) {
+        selectedSection = section
         loadData()
     }
     
@@ -55,14 +68,30 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     private func loadData() {
-        //TODO: load Data
-        ApiManager.getBooks { [weak self] result in
-            switch result {
-            case .success(let books):
-                self?.books = books
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self?.showError?(error.localizedDescription)
+        switch selectedSection {
+        case .recent: break
+            // TODO: Implement
+        case .trend(let trend):
+            TopBookApiManager.getBooks(trending: trend) { [weak self] result in
+                switch result {
+                case .success(let books):
+                    self?.books = books
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.showError?(error.localizedDescription)
+                    }
+                }
+            }
+        default:
+            //TODO: load Data
+            ApiManager.getBooks { [weak self] result in
+                switch result {
+                case .success(let books):
+                    self?.books = books
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.showError?(error.localizedDescription)
+                    }
                 }
             }
         }

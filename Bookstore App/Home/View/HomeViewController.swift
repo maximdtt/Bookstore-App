@@ -42,15 +42,20 @@ class HomeViewController: UIViewController {
     private lazy var contentView: UIView = UIView()
     
     private lazy var topBooksSectionView: HomeSectionView = {
-
-        let view = HomeSectionView(viewModel: HomeViewModel())
+        let vm = HomeViewModel()
+        vm.setSection(.all)
+        
+        let view = HomeSectionView(viewModel: vm)
         view.viewController = self
         
         return view
     }()
     
     private lazy var recentBooksSectionView: HomeSectionView = {
-        let view = HomeSectionView(viewModel: HomeViewModel())
+        let vm = HomeViewModel()
+        vm.setSection(.all)
+        
+        let view = HomeSectionView(viewModel: vm)
         view.viewController = self
         view.hiddenNav()
         view.setTitle(title: "Recent Books")
