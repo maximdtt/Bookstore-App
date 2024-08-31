@@ -10,7 +10,7 @@ import Foundation
 final class TopBookApiManager {
     private static let baseUrl = "https://openlibrary.org/"
     private static let path = "trending/"
-    private static let requiredFields = "?fields=key,isbn,ratings_average,title,author_name,first_sentence,subject"
+    private static let requiredFields = "?fields=*,availability"
     
     enum Trending: String {
         case week = "weekly"
@@ -18,7 +18,7 @@ final class TopBookApiManager {
         case year = "yearly"
     }
     
-    static func getBooks(trending: Trending, completion: @escaping(Result<[BooksResponseObject], Error>) -> ()) {
+    static func getBooks(trending: Trending, completion: @escaping(Result<[TopBooks], Error>) -> ()) {
         let stringUrl = baseUrl + path
         + trending.rawValue + ".json" + requiredFields + "&q=1&limit=10"
         
@@ -33,13 +33,13 @@ final class TopBookApiManager {
     
     private static func handleResponse(data: Data?,
                                        error: Error?,
-                                       completion: @escaping(Result<[BooksResponseObject], Error>) -> ()) {
+                                       completion: @escaping(Result<[TopBooks], Error>) -> ()) {
         if let error = error {
             completion(.failure(NetWorkingError.networkingError(error)))
         } else if let data = data {
             do {
-                let model = try JSONDecoder().decode(ResponseObject.self, from: data)
-                completion(.success(model.docs))
+                let model = try JSONDecoder().decode(TrendingObject.self, from: data)
+                completion(.success(model.works))
             }
             catch let decodeError {
                 print(decodeError)

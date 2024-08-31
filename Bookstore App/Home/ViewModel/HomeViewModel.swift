@@ -75,7 +75,9 @@ final class HomeViewModel: HomeViewModelProtocol {
             TopBookApiManager.getBooks(trending: trend) { [weak self] result in
                 switch result {
                 case .success(let books):
-                    self?.books = books
+                    self?.books = books.map({ (b: TopBooks) in
+                        BooksResponseObject(key: b.key, title: b.title, authorName: b.authorName, subject: ["unknown"], ratingsAverage: 0, firstSentence: nil, isbn: [b.availability?.isbn ?? ""])
+                    })
                 case .failure(let error):
                     DispatchQueue.main.async {
                         self?.showError?(error.localizedDescription)
