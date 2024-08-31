@@ -215,6 +215,8 @@ extension HomeSectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let book = viewModel.getBook(for: indexPath.row)
         
+        viewModel.saveForRecent(for: indexPath.row)
+        
         viewController?.navigationController?.pushViewController(DetailsBookViewController(viewModel: DetailsViewModel(book: book)), animated: true)
     }
 }

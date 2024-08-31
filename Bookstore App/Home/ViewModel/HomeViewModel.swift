@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseAuth
+import FirebaseDatabase
 
 protocol HomeViewModelProtocol {
     var reloadData: (() -> Void)? { get set }
@@ -14,6 +16,7 @@ protocol HomeViewModelProtocol {
     var numberOfCells: Int { get }
     
     func getBook(for row: Int) -> BookCellViewModel
+    func saveForRecent(for row: Int)
 }
 
 final class HomeViewModel: HomeViewModelProtocol {
@@ -39,6 +42,16 @@ final class HomeViewModel: HomeViewModelProtocol {
     func getBook(for row: Int) -> BookCellViewModel {
         let book = books[row]
         return BookCellViewModel(book: book)
+    }
+    
+    func saveForRecent(for row: Int) {
+        if let user = Auth.auth().currentUser {
+            let book = books[row]
+            
+            let ref = Database.database().reference().child("recent")
+            
+            ref.child(user.uid).updateChildValues([book.key: book.toDictionary()])
+        }
     }
     
     private func loadData() {

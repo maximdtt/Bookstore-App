@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import Firebase
 
 class DetailsBookViewController: UIViewController {
     //MARK: - GUI Variables
