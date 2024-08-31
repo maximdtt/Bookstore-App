@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreData
+import FirebaseAuth
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = WelcomeViewController()
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
+        FirebaseApp.configure()
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user == nil {
+                let viewController = LoginViewController()
+                self.window?.rootViewController = viewController
+                self.window?.makeKeyAndVisible()
+            }
+        }
 
         return true
     }

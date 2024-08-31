@@ -6,6 +6,7 @@
 //
 import SnapKit
 import UIKit
+import FirebaseAuth
 
 final class AccountViewController: UIViewController {
     // MARK: - GUI Variables
@@ -71,19 +72,36 @@ final class AccountViewController: UIViewController {
         return view
     }()
     
+    private lazy var listButton = {
+        var configuration = UIButton.Configuration.plain()
+        
+        configuration.title = "My List"
+        configuration.image = UIImage(systemName: "arrow.right")
+        configuration.imagePlacement = .trailing
+        configuration.imagePadding = 230
+        configuration.titleAlignment = .leading
+        configuration.background.backgroundColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1.0)
+        
+        return UIButton(configuration: configuration)
+    }()
+    
+    
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        getCurrentUser()
     }
     
     // MARK: - Private methods
     private func setupUI() {
         view.backgroundColor = .white
+        navigationController?.isNavigationBarHidden = true
         
         view.addSubviews([accTitleLabel, logoutButton, contentView])
-        contentView.addSubviews([accImage,loginContainerView])
+        contentView.addSubviews([accImage,loginContainerView, listButton])
         loginContainerView.addSubviews([loginLabel, loginTextFiled])
         
         setupConstraints()
@@ -137,10 +155,27 @@ final class AccountViewController: UIViewController {
             make.trailing.equalTo(loginContainerView.snp.trailing).inset(13)
             make.height.equalTo(loginContainerView.snp.height)
         }
+        
+        listButton.snp.makeConstraints { make in
+            make.top.equalTo(loginContainerView.snp.bottom).offset(25)
+            make.leading.equalTo(loginContainerView.snp.leading)
+            make.width.equalTo(loginContainerView.snp.width)
+            make.height.equalTo(56)
+        }
+    }
+    
+    private func getCurrentUser() {
+        if let user = Auth.auth().currentUser {
+            loginTextFiled.text = user.email
+        }
     }
     
     @objc
     func logoutAction() {
-        navigationController?.setViewControllers([LoginViewController()], animated: true)
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error)
+        }
     }
 }

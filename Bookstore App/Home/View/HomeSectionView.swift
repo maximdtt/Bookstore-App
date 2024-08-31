@@ -43,6 +43,7 @@ class HomeSectionView: UIView {
         button.layer.borderColor = borderColor
         button.layer.borderWidth = borderWidth
         button.titleLabel?.font = fond
+        button.addTarget(self, action: #selector(self.weekAction), for: .touchUpInside)
         
         return button
     }()
@@ -56,6 +57,7 @@ class HomeSectionView: UIView {
         button.layer.borderColor = borderColor
         button.layer.borderWidth = borderWidth
         button.titleLabel?.font = fond
+        button.addTarget(self, action: #selector(self.monthAction), for: .touchUpInside)
         
         return button
     }()
@@ -69,6 +71,7 @@ class HomeSectionView: UIView {
         button.layer.borderColor = borderColor
         button.layer.borderWidth = borderWidth
         button.titleLabel?.font = fond
+        button.addTarget(self, action: #selector(self.yearAction), for: .touchUpInside)
         
         return button
     }()
@@ -208,12 +211,47 @@ extension HomeSectionView: UICollectionViewDataSource {
         
         return cell
     }
+    
+    @objc
+    func weekAction() {
+        resetButtonColors()
+        viewModel.setSection(.trend(trending: .week))
+        weekButton.backgroundColor = .black
+        weekButton.setTitleColor(.white, for: .normal)
+        
+    }
+    
+    @objc
+    func monthAction() {
+        resetButtonColors()
+        viewModel.setSection(.trend(trending: .month))
+        monthButton.backgroundColor = .black
+        monthButton.setTitleColor(.white, for: .normal)
+    }
+    
+    @objc
+    func yearAction() {
+        resetButtonColors()
+        viewModel.setSection(.trend(trending: .year))
+        yearButton.backgroundColor = .black
+        yearButton.setTitleColor(.white, for: .normal)
+    }
+    
+    func resetButtonColors() {
+        weekButton.backgroundColor = .white
+        weekButton.setTitleColor(.black, for: .normal)
+        monthButton.backgroundColor = .white
+        monthButton.setTitleColor(.black, for: .normal)
+        yearButton.backgroundColor = .white
+        yearButton.setTitleColor(.black, for: .normal)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 extension HomeSectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let book = viewModel.getBook(for: indexPath.row)
+        viewModel.saveForRecent(for: indexPath.row)
         
         viewController?.navigationController?.pushViewController(DetailsBookViewController(viewModel: DetailsViewModel(book: book)), animated: true)
     }

@@ -30,6 +30,18 @@ struct BooksResponseObject: Codable {
         case subject
         case ratingsAverage = "ratings_average"
         case firstSentence = "first_sentence"
-        case isbn 
+        case isbn
+    }
+    
+    func toDictionary() -> [String: Any] {
+        return [
+            "key": key,
+            "title": title,
+            "authorName": authorName,
+            "subject": subject,
+            "ratingsAverage": ratingsAverage,
+            "firstSentence": firstSentence ?? [],
+            "isbn": isbn
+        ]
     }
 }
