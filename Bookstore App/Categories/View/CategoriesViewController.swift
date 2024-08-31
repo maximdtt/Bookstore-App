@@ -54,13 +54,26 @@ final class CategoriesViewController: UIViewController {
     
     // MARK: - Properties
     
+    private var viewModel = CategoriesViewModel()
+    
     // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         
+        viewModel.fetchBooks { [weak self] result in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success:
+                            self?.collectionView.reloadData()
+                        case .failure(let error):
+                            print("Failed: \(error.localizedDescription)")
+                }
+            }
+        }
     }
+    
     // MARK: - Methods
     
     // MARK: - Private methods
@@ -121,15 +134,19 @@ extension CategoriesViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        20
+        return viewModel.subjects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.reuseID, for: indexPath) as? CategoriesCollectionViewCell else {
-            return UICollectionViewCell()
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.reuseID, for: indexPath) as? CategoriesCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            
+            let subject = viewModel.subjects[indexPath.item]
+            cell.categoryLabel.text = subject
+            
+            return cell
         }
-        return cell
-    }
 }
 
 // MARK: - UICollectionViewDelegate

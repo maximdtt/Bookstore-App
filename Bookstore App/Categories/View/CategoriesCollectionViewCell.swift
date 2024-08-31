@@ -34,7 +34,7 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         return layer
     }()
     
-    private lazy var categoryLabel: UILabel = {
+    lazy var categoryLabel: UILabel = {
         let label = UILabel()
         
         label.text = "Fantasy"
