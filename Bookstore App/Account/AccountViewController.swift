@@ -6,6 +6,7 @@
 //
 import SnapKit
 import UIKit
+import FirebaseAuth
 
 final class AccountViewController: UIViewController {
     // MARK: - GUI Variables
@@ -76,6 +77,7 @@ final class AccountViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        getCurrentUser()
     }
     
     // MARK: - Private methods
@@ -139,8 +141,18 @@ final class AccountViewController: UIViewController {
         }
     }
     
+    private func getCurrentUser() {
+        if let user = Auth.auth().currentUser {
+            loginTextFiled.text = user.email
+        }
+    }
+    
     @objc
     func logoutAction() {
-        navigationController?.setViewControllers([LoginViewController()], animated: true)
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error)
+        }
     }
 }

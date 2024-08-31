@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     //MARK: - GUI Variables
@@ -120,6 +121,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loginTextFiled.delegate = self
+        passwordTextField.delegate = self
+        
+        
         setupUI()
     }
     
@@ -224,8 +229,55 @@ class LoginViewController: UIViewController {
         }
     }
     
+    private func loginOrSignup() {
+        guard let login = loginTextFiled.text, !login.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty, password.count > 5 else {
+            showAlert()
+            return
+        }
+        
+        Auth.auth().signIn(withEmail: login, password: password) { result, error in
+            if let error = error {
+                print(error)
+                self.createUser(login: login, password: password)
+            } else {
+                self.goToWelcome()
+            }
+        }
+    }
+    
+    private func createUser(login: String, password: String) {
+        Auth.auth().createUser(withEmail: login, password: password) { result, error in
+            if let error = error {
+                self.showAlert()
+            } else {
+                self.goToWelcome()
+            }
+        }
+    }
+    
+    private func goToWelcome() {
+        let vc = WelcomeViewController()
+        self.view.window?.rootViewController = vc
+        self.view.window?.makeKeyAndVisible()
+    }
+    
     @objc
     func goToAccount() {
-        navigationController?.setViewControllers([AccountViewController()], animated: true)
+        loginOrSignup()
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Error", message: "Fill all fields/Password must be > 6", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        loginOrSignup()
+        
+        return true
     }
 }
