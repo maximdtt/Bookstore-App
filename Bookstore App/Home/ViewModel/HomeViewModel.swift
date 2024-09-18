@@ -76,7 +76,7 @@ final class HomeViewModel: HomeViewModelProtocol {
                 switch result {
                 case .success(let books):
                     self?.books = books.map({ (b: TopBooks) in
-                        BooksResponseObject(key: b.key, title: b.title, authorName: b.authorName, subject: ["unknown"], ratingsAverage: 0, firstSentence: nil, isbn: [b.availability?.isbn ?? ""])
+                        BooksResponseObject(key: b.key, title: b.title, authorName: b.authorName, subject: ["unknown"], ratingsAverage: 0, firstSentence: nil)
                     })
                 case .failure(let error):
                     DispatchQueue.main.async {

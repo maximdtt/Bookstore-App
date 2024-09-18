@@ -14,13 +14,13 @@ struct BooksResponseObject: Codable {
     let subject: [String]    //категория
     let ratingsAverage: Double //рейтинг
     let firstSentence: [String]?  //описание первого абзаца
-    let isbn: [String]      //фото
+//    let isbn: [String]      //фото
     
     func getImage() -> URL? {
-        if isbn.isEmpty {
-            return nil
-        }
-        return URL(string: "https://covers.openlibrary.org/b/isbn/\(isbn[0])-L.jpg")
+//        if isbn.isEmpty {
+//            return nil
+//        }
+        return URL(string: "")
         
     }
     
@@ -31,7 +31,7 @@ struct BooksResponseObject: Codable {
         case subject
         case ratingsAverage = "ratings_average"
         case firstSentence = "first_sentence"
-        case isbn
+//        case isbn
     }
     
     func toDictionary() -> [String: Any] {
@@ -41,8 +41,8 @@ struct BooksResponseObject: Codable {
             "authorName": authorName,
             "subject": subject,
             "ratingsAverage": ratingsAverage,
-            "firstSentence": firstSentence ?? [],
-            "isbn": isbn
+            "firstSentence": firstSentence ?? []
+//            "isbn": isbn
         ]
     }
 }
